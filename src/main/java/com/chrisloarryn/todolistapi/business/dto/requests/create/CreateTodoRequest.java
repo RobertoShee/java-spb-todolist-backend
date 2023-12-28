@@ -2,7 +2,6 @@ package com.chrisloarryn.todolistapi.business.dto.requests.create;
 
 import com.chrisloarryn.todolistapi.entities.enums.Priority;
 import com.chrisloarryn.todolistapi.entities.enums.State;
-
 import lombok.*;
 
 import java.util.Date;

@@ -8,14 +8,14 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
-import java.util.UUID;
+
 
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 public class CreateTodoResponse {
-    private UUID id;
+    private String id;
     private String title;
     private String description;
     private Date dueDate;

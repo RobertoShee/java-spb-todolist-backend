@@ -15,7 +15,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UpdateTodoResponse {
-    private UUID id;
+    private String id;
     private String title;
     private String description;
     private Date dueDate;

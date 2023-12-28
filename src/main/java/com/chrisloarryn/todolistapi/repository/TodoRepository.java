@@ -1,10 +1,13 @@
 package com.chrisloarryn.todolistapi.repository;
 
 import com.chrisloarryn.todolistapi.entities.Todo;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
-import java.util.UUID;
+import java.util.List;
 
-public interface TodoRepository extends JpaRepository<Todo, UUID>
-{
+public interface TodoRepository extends MongoRepository<Todo, String> {
+
+    //   List<Todo> findAll();
+
+
 }

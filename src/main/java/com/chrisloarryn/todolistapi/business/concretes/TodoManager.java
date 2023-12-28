@@ -13,16 +13,16 @@ import com.chrisloarryn.todolistapi.entities.TodoNotFoundException;
 import com.chrisloarryn.todolistapi.repository.TodoRepository;
 import com.chrisloarryn.todolistapi.utils.mappers.ModelMapperService;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.UUID;
 
 @Service
 @AllArgsConstructor
 public class TodoManager implements TodoService {
-
-    private final TodoRepository todoRepository;
+    @Autowired
+    private TodoRepository todoRepository;
     private final ModelMapperService mapper;
     private final TodoBusinessRules rules;
 
@@ -36,7 +36,7 @@ public class TodoManager implements TodoService {
     }
 
     @Override
-    public GetTodoResponse getById(UUID id) {
+    public GetTodoResponse getById(String id) {
         if (!todoRepository.existsById(id)) {
             throw new TodoNotFoundException(
                     "Todo with id " + id + " does not exists");
@@ -49,11 +49,12 @@ public class TodoManager implements TodoService {
     public CreateTodoResponse add(CreateTodoRequest todoRequest) {
         var todo = mapper.forRequest().map(todoRequest, Todo.class);
         var createdTodo = todoRepository.save(todo);
+        System.out.println("pene"+createdTodo.toString());
         return mapper.forResponse().map(createdTodo, CreateTodoResponse.class);
     }
 
     @Override
-    public UpdateTodoResponse update(UUID id, UpdateTodoRequest todoRequest) {
+    public UpdateTodoResponse update(String id, UpdateTodoRequest todoRequest) {
         if (!todoRepository.existsById(id)) {
             throw new TodoNotFoundException(
                     "Todo with id " + id + " does not exists");
@@ -65,7 +66,7 @@ public class TodoManager implements TodoService {
     }
 
     @Override
-    public void delete(UUID id) {
+    public void delete(String id) {
         if (!todoRepository.existsById(id)) {
             throw new TodoNotFoundException(
                     "Todo with id " + id + " does not exists");

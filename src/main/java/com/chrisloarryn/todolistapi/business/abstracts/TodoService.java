@@ -8,16 +8,15 @@ import com.chrisloarryn.todolistapi.business.dto.responses.get.GetTodoResponse;
 import com.chrisloarryn.todolistapi.business.dto.responses.update.UpdateTodoResponse;
 
 import java.util.List;
-import java.util.UUID;
 
 public interface TodoService {
     List<GetAllTodosResponse> getAll();
 
-    GetTodoResponse getById(UUID id);
+    GetTodoResponse getById(String id);
 
     CreateTodoResponse add(CreateTodoRequest todo);
 
-    UpdateTodoResponse update(UUID id, UpdateTodoRequest todo);
+    UpdateTodoResponse update(String id, UpdateTodoRequest todo);
 
-    void delete(UUID id);
+    void delete(String id);
 }
